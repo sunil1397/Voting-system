@@ -13,4 +13,7 @@
     <!-- Layout styles -->
     <link rel="stylesheet" href="{{URL::asset('public/assets/backend/css/style.css')}}">
     <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{URL::asset('public/assets/backend/images/favicon.ico')}}" />
+    <!-- <link rel="shortcut icon" href="{{URL::asset('public/assets/backend/images/favicon.ico')}}" /> -->
+    <link rel="stylesheet" href="{{ URL::asset('public/assets/backend/sweetalert2/css/sweetalert2.min.css')}}"> 
+    <link rel="stylesheet" href="{{URL::asset('public/assets/backend/css/jquery.datetimepicker.css')}}">
+  

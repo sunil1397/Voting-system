@@ -17,4 +17,9 @@ class DashboardController extends Controller
     {
         return \View::make("backend/dashboard")->with([]);
     }
+    public function adminLogout()
+    {
+        Session::flush();
+        return redirect('/admin-login');
+    }
 }

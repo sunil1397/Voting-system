@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\PollController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\CheckAuth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +21,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// ------------------ Dashboard Cntroller -------------
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+Route::middleware([CheckAuth::class])->group(function(){
+    // ------------------ Dashboard Cntroller -------------
+
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/admin-logout', [DashboardController::class, 'adminLogout']);
+
+    // ----------------- Add Poll -------------------
+    Route::get('/add-poll', [PollController::class, 'addPoll']);
+});
+
+
 
 // --------------- AdminLogin Controller --------------
+
+Route::get('/admin-login', [AdminLoginController::class, 'adminLogin']);
+Route::post('/check-auth', [AdminLoginController::class, 'checkAuth']);
