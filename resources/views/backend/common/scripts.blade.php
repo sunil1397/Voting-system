@@ -31,6 +31,5 @@
 <script src="{{ URL::asset('public/assets/backend/js/poll.js')}}"></script> 
 
   <script type="text/javascript">  
-    $('#pollEndDate').datetimepicker({
-});  
+    
 </script>
