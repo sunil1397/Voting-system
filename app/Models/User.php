@@ -16,10 +16,10 @@ class User extends Authenticatable
      */
     protected $table = 'user';
 	protected $dateFormat = 'Y-m-d h:i:s';
-	const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
+	const CREATED_AT = 'created_on';
+    const UPDATED_AT = 'created_on';
     protected $fillable = [
-       'name', 'email', 'password','phone','position','address','pincode','referral','status',
+       'name', 'email', 'password','phone_no','stauts','last_login_ip','last_login_time','user_type',
     ];
 
     

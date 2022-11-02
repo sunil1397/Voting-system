@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PollController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAuth;
@@ -16,12 +17,6 @@ use App\Http\Middleware\CheckAuth;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
 Route::middleware([CheckAuth::class])->group(function(){
     // ------------------ Dashboard Cntroller -------------
 
@@ -30,6 +25,8 @@ Route::middleware([CheckAuth::class])->group(function(){
 
     // ----------------- Add Poll -------------------
     Route::get('/add-poll', [PollController::class, 'addPoll']);
+    Route::post('/save-poll', [PollController::class, 'savePoll']);
+    Route::get('/list-poll', [PollController::class, 'listPoll']);
 });
 
 
@@ -38,3 +35,7 @@ Route::middleware([CheckAuth::class])->group(function(){
 
 Route::get('/admin-login', [AdminLoginController::class, 'adminLogin']);
 Route::post('/check-auth', [AdminLoginController::class, 'checkAuth']);
+
+// ------------------------- FrontEnd ------------------
+// ----------------------- IndexController --------------
+Route::get('/', [HomeController::class, 'home']);

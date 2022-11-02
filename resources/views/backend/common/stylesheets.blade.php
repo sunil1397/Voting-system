@@ -16,4 +16,5 @@
     <!-- <link rel="shortcut icon" href="{{URL::asset('public/assets/backend/images/favicon.ico')}}" /> -->
     <link rel="stylesheet" href="{{ URL::asset('public/assets/backend/sweetalert2/css/sweetalert2.min.css')}}"> 
     <link rel="stylesheet" href="{{URL::asset('public/assets/backend/css/jquery.datetimepicker.css')}}">
+    <link rel="stylesheet" href="{{URL::asset('public/assets/backend/css/jquery.dataTables.min.css')}}">
   

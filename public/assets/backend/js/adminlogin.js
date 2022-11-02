@@ -1,5 +1,4 @@
-var AdminLogin = (function () { 
-
+var AdminLogin = (function () {
 	function adminLogin(){
 		$(document).ready(function() {
             $("#loginForm").validate({
@@ -45,10 +44,6 @@ var AdminLogin = (function () {
             });
         });
 	}
-
-    // function setEditEvents() {
-    // }
-
 	return {
         init: function () {
             adminLogin();

@@ -27,22 +27,24 @@
             <div class="form-group">
               <label for="exampleInputName1">Answer *</label>
               <div id="ans-section">
-                <input type="text" class="form-control"  name="poll_answer[]" placeholder="Answer">
+                <p><input type="text" class="form-control" name="poll_answer[]" placeholder="Answer"></p>
               </div>
               
               <a href="javascript:void(0)" title="Add New Poll Answer" id="addNewPoll" class="btn btn-primary btn-sm m-2"><i class="mdi mdi-plus-box"></i></a>
+
+              
             </div>
             <div class="form-check">
               <label class="form-check-label">
-                <input type="checkbox" name="multiple_answer" class="form-check-input"> Multiple answer </label>
+                <input type="checkbox" name="multiple_answer" value="1" class="form-check-input"> Multiple answer </label>
             </div>
             <div class="form-group">
               <label class="col-sm-3 col-form-label">Poll End</label>
-                <input class="form-control" id="pollEndDate" placeholder="dd/mm/yyyy" />
+                <input class="form-control" id="pollEndDate" name="poll_end_date" placeholder="dd/mm/yyyy" />
             </div>
             <div class="form-check">
               <label class="form-check-label">
-                <input type="checkbox" name="only_unique" class="form-check-input"> Only unique </label>
+                <input type="checkbox" name="only_unique" value="1" class="form-check-input"> Only unique </label>
             </div>
             <div class="form-group">
               <label for="exampleInputName1">Status</label>
