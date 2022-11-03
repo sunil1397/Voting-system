@@ -16,6 +16,7 @@
                         <thead>
                           <tr>
                             <th> Poll </th>
+                            <th> Genarate Date </th>
                             <th> Action </th>
                           </tr>
                         </thead>
@@ -23,7 +24,8 @@
                         @foreach($question_data as $data)
                           <tr>
                             <td> {{$data['poll_question']}} </td>
-                            <td> <button onclick="" class="btn btn-success btn-sm"><i class="mdi mdi mdi-eye"></i></button></td>
+                            <td> {{$data['created_on']}} </td>
+                            <td> <a href="{{URL('poll-answer')}}/{{base64_encode($data['id'])}}" class="btn btn-success btn-sm"><i class="mdi mdi mdi-eye"></i></a></td>
                           </tr>
                           @endforeach
                         </tbody>

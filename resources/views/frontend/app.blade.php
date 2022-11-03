@@ -13,5 +13,6 @@
       <!-- page-body-wrapper ends -->
     </div>
     @include('frontend/common/scripts')
+    @yield('script')
   </body>
 </html>

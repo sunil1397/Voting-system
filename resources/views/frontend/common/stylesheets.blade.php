@@ -16,4 +16,5 @@
     <link rel="stylesheet" href="{{URL::asset('public/assets/frontend/css/demo_3/style.css')}}">
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{URL::asset('public/assets/frontend/images/favicon.png')}}" />
+    <link rel="stylesheet" href="{{ URL::asset('public/assets/backend/sweetalert2/css/sweetalert2.min.css')}}"> 
     <link rel="stylesheet" href="{{URL::asset('public/assets/backend/css/jquery.dataTables.min.css')}}">

@@ -34,7 +34,7 @@
           <div class="container">
             <ul class="nav page-navigation">
               <li class="nav-item">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="{{URl('/')}}">
                   <i class="mdi mdi-compass-outline menu-icon"></i>
                   <span class="menu-title">Poll List</span>
                 </a>

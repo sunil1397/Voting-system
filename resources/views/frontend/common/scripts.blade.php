@@ -1,5 +1,9 @@
 <!-- container-scroller -->
     <!-- plugins:js -->
+    <script type="text/javascript">
+    var APP_URL = {!! json_encode(url('/')) !!}
+    console.log(APP_URL);
+    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="{{URL::asset('public/assets/frontend/vendors/js/vendor.bundle.base.js')}}"></script>
     <!-- endinject -->
@@ -23,5 +27,9 @@
     <!-- Custom js for this page -->
     <script src="{{URL::asset('public/assets/frontend/js/dashboard.js')}}"></script>
     <script src="{{URL::asset('public/assets/frontend/js/index.js')}}"></script>
+    <script src="{{URL::asset('public/assets/frontend/js/userPoll.js')}}"></script>
+    
+    <script src="{{ URL::asset('public/assets/backend/js/jquery.validate.js')}}"></script>
+    <script src="{{ URL::asset('public/assets/backend/sweetalert2/js/sweetalert2.all.min.js')}}"></script> 
     <script src="{{ URL::asset('public/assets/backend/js/jquery.dataTables.min.js')}}"></script> 
     <!-- End custom js for this page -->

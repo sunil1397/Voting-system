@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers;
+namespace App\Http\Controllers; 
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller; 
@@ -16,7 +16,8 @@ class HomeController extends Controller
 {
     public function home()
     {
-        $qry = Poll_question::select('*')->where([])->orderBy('id', 'desc')->get()->toArray();
+        $today = date('Y-m-d H:i:s');
+        $qry = Poll_question::select('*')->whereRaw('`status` = 1 AND (`closing_date` IS  NULL OR  `closing_date` > "'.$today.'")')->orderBy('id', 'desc')->get()->toArray();
         return \View::make("frontend/pollList")->with([ 'question_data' => $qry ]);
     }
 }
