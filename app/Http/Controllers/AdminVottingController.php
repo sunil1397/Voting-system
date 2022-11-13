@@ -12,61 +12,19 @@ use App\Models\User_answer;
 use App\Gallery;
 use Session;
 use DB;
-use Hamcrest\Arrays\IsArray;
 use Mail;
 
-class PollAnswerController extends Controller
+class AdminVottingController extends Controller
 {
-    public function pollAnswer($id)
-    {   
-        $question_Id = base64_decode($id);
+    public function pollDetails($id)
+    {
+        $question_Id = $id;
         $qry = Poll_question::select('*')->where(['id' => $question_Id])->get()->toArray();
         $ans_qry = Poll_answer::select('*')->where(['fk_question_id' => $question_Id])->get()->toArray();
-        // $mac_id = $this->mac_id(); 
-        // echo $mac_id; exit();
-        return \View::make("frontend/pollAnswer")->with(['poll_question' => $qry , 'ans_qry' => $ans_qry]);
+        
+        return \View::make("backend/votting_details")->with(['poll_question' => $qry ,'ans_qry' => $ans_qry]);
     }
     
-    public function submitPollAnswer(Request $request)
-    {
-        $returnData = [];
-        if ($request->ajax()) { 
-            // DB::enableQueryLog();
-            $multiple_checking = $request->is_multiple_checking;
-            if ($multiple_checking == 1){
-                for($i=0; $i<sizeof($request->answer); $i++){
-                    $data = new User_answer;
-                    $date =  date('Y-m-d h:i:s');
-                    $data->fk_question_id = $request->question_id;
-                    $data->fk_answer_id = $request->answer[$i];
-                    $data->created_at = $date;
-                    $data->updated_at = $date;
-                    $data->physical_device_id = $request->physical_address;
-                    $saveData= $data->save();
-                }
-            }else{
-                $data = new User_answer;
-                $date =  date('Y-m-d h:i:s');
-                $data->fk_question_id = $request->question_id;
-                $data->fk_answer_id = $request->answer;
-                $data->created_at = $date;
-                $data->updated_at = $date;
-                $data->physical_device_id = $request->physical_address;
-                $saveData= $data->save();
-            }
-            
-            // $query = DB::getQueryLog();
-            // dd($query);
-            if($saveData) {
-               $total_ans =  $this->votingCalculation($request->question_id,$request->physical_address);
-                $returnData = ["status" => 1, "msg" => "Save successful.", "data" => $total_ans];
-            }else {
-                $returnData = ["status" => 0, "msg" => "Save failed! Something is wrong."];
-            } 
-        }
-        return response()->json($returnData);
-    }
-
     public function pollResult(Request $request){
 
         $question_id = $request->question_id;

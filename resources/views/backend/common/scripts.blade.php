@@ -28,7 +28,8 @@
 ==================== -->
 <script src="{{ URL::asset('public/assets/backend/sweetalert2/js/sweetalert2.all.min.js')}}"></script> 
 <script src="{{ URL::asset('public/assets/backend/js/jquery.datetimepicker.full.js')}}"></script> 
-<script src="{{ URL::asset('public/assets/backend/js/poll.js')}}"></script> 
+
+
 <script src="{{ URL::asset('public/assets/backend/js/jquery.dataTables.min.js')}}"></script> 
 
   <script type="text/javascript">  

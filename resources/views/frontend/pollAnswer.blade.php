@@ -35,18 +35,23 @@
                     <div style="float:right;">Voting close on <span id="time" data-minute="{{$total_minutes*60}}"></span></div>
                     @endif
                     {{  Form::open( array('url' =>'', 'id'=>'UserAnswer', 'method'=>'POST', 'class'=>'forms-sample') )  }}
+
                     @foreach($poll_question as $data)
-                    <div class="card-title mb-2"> {{$data['poll_question']}} </div>
-                    <p class="mb-3">{{$data['description']}}</p>
-                    <input type="hidden" name="question_id" value="{{$data['id']}}" />
-                    <input type="hidden" name="is_multiple_checking" value="{{$poll_question[0]['multiple_checking']}}" />
+
+                        <div class="card-title mb-2"> {{$data['poll_question']}} </div>
+
+                        <p class="mb-3">{{$data['description']}}</p>
+
+                        <input type="hidden" name="question_id" value="{{$data['id']}}" id="question_id" />
+
+                        <input type="hidden" name="is_multiple_checking" value="{{$poll_question[0]['multiple_checking']}}" />
+                        <input type="hidden" name="physical_address" id="physical_address"  />
                     @endforeach
+                    
                     <div id="VotingPercent">
                     @if(empty($votingData))
                         @foreach($ans_qry as $value)
                         <div class="d-flex border-bottom border-top py-3">
-                        
-
                         <div class="ps-2">
                             <p class="m-0 text-black">
                                 @if($poll_question[0]['multiple_checking']==1)
@@ -54,8 +59,6 @@
                                 @else
                                     <input type="radio" name="answer" value="{{$value['id']}}" /> {{$value['answer']}}
                                 @endif
-                                
-
                             </p>
                         </div>
                         </div>

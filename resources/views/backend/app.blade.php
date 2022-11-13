@@ -30,5 +30,7 @@
       <!-- page-body-wrapper ends -->
     </div>
     @include('backend/common/scripts')
+    @yield('contentVotingDetails')
+    @yield('contentPollList')
   </body>
 </html>

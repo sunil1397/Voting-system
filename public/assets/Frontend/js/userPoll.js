@@ -1,14 +1,36 @@
-var userPoll = (function () { 
+var userPoll = (function () {
+    
+    function getMachineId() {
+    
+        let machineId = localStorage.getItem('MachineId');
+        
+        if (!machineId) {
+            machineId = Math.random().toString(36).slice(2);
+            localStorage.setItem('MachineId', machineId);
+        }
+    
+        return machineId;
+    }
+
+   
+
+
 	function CreatePoll(){
 		$(document).ready(function() {
+
+            var uuid = getMachineId();
+            $("#physical_address").val(uuid);
+            
+            getVoteData();
+
             $("#UserAnswer").validate({
                 rules: {
                     answer: {
                         required: true
                     }
                 },
-                submitHandler: function() {
-                    // e.preventDefault();
+                submitHandler: function(e) {
+                    
                     $('.btn-primary').prop('disabled', true);
                     $.ajax({
                         headers: {
@@ -40,6 +62,40 @@ var userPoll = (function () {
             });
         });
 	}
+
+    function getVoteData(){
+
+        var question_id =$("#question_id").val();
+        var physical_address = $("#physical_address").val(); 
+        $.ajax({
+            headers: {
+                'X-CSRF-TOKEN': $('input[name="_token"]').val()
+            },
+            url:APP_URL+"/get-poll-result",
+            method:"GET",  
+            data:{
+                question_id:question_id,
+                physical_address:physical_address
+            }, 
+            dataType:"json", 
+            beforeSend:function(){  
+                //
+            },  
+            success:function(res){
+
+                if(res.data != "") {
+                    $('#VotingPercent').html(res['data']);
+                }
+            },
+            error: function(e) {
+                $('.btn-primary').prop('disabled', false);
+                swal("Opps!", "There is an error", "error");
+            },
+            complete: function(c) {
+                $('.btn-primary').prop('disabled', false);
+            }
+        });
+    }
     
 
     // function loadSetup(){

@@ -29,6 +29,7 @@
         <ul class="nav flex-column sub-menu">
           <li class="nav-item"> <a class="nav-link" href="{{URL('/add-poll')}}">Add Poll</a></li>
           <li class="nav-item"> <a class="nav-link" href="{{URL('/list-poll')}}">Poll List</a></li>
+          <li class="nav-item"> <a class="nav-link" href="{{URL('/voter-list')}}">Voter List</a></li>
         </ul>
       </div>
     </li>

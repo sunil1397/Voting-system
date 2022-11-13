@@ -5,6 +5,8 @@ use App\Http\Controllers\AdminLoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\PollAnswerController;
+use App\Http\Controllers\AdminVottingController;
+use App\Http\Controllers\VoterController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\CheckAuth;
 
@@ -28,6 +30,16 @@ Route::middleware([CheckAuth::class])->group(function(){
     Route::get('/add-poll', [PollController::class, 'addPoll']);
     Route::post('/save-poll', [PollController::class, 'savePoll']);
     Route::get('/list-poll', [PollController::class, 'listPoll']);
+    Route::post('/stop-poll', [PollController::class, 'stopPoll']);
+    Route::post('/get-poll-result-admin', [PollController::class, 'getPollResultAdmin']);
+
+    
+    Route::get('/poll-details/{id}', [AdminVottingController::class, 'pollDetails']);
+
+
+    // ------------------- Voter List ----------------------
+    Route::get('/voter-list/', [VoterController::class, 'VoterList']);
+
 
     
 });
@@ -46,3 +58,5 @@ Route::get('/', [HomeController::class, 'home']);
 //-------------------- Answer Poll ----------------------
 Route::get('/poll-answer/{id}', [PollAnswerController::class, 'pollAnswer']);
 Route::post('/submit-poll-answer', [PollAnswerController::class, 'submitPollAnswer']);
+Route::get('/get-poll-result', [PollAnswerController::class, 'pollResult']);
+

@@ -32,8 +32,14 @@
                           <td> {{$data['id']}} </td>
                           <td> {{$data['poll_question']}} </td>
                           <td> {{$data['description']}} </td>
-                          <td><button class="btn btn-danger btn-sm"><i class="mdi mdi-close-circle"></i></button>
-                          <button class="btn btn-success btn-sm"><i class="mdi mdi mdi-eye"></i></button>
+                          <td>
+                            <!-- <button class=""><i class="mdi mdi-close-circle"></i></button> -->
+                          <input name="_token" type="hidden" value="{{ csrf_token() }}">
+                          @if($data['status']==1)
+                          <a href="javascript:void(0)" class="stop-question btn btn-danger btn-sm" data-id="{{$data['id']}}" data-status="2" title="Stop Question"><i class="mdi mdi-close-circle"></i></a>
+                          @endif
+
+                          <a class="btn btn-success btn-sm" href="{{URL('poll-details')}}/{{$data['id']}}"><i class="mdi mdi mdi-eye"></i></a>
                         </td>
                           <!-- <td></td> -->
                         </tr>
@@ -45,4 +51,7 @@
               </div>
             </div>
           </div>
+@endsection
+@section('contentPollList')
+<script src="{{ URL::asset('public/assets/backend/js/poll.js')}}"></script> 
 @endsection
