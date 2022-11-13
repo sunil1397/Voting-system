@@ -27,7 +27,7 @@ class AdminLoginController extends Controller
             Session::put('user_id', $select_user[0]->id);
             $returnData = ["status" => 1];
         }else{
-            $returnData = ["status" => 0, "msg" => "Sorry... you have wrong authantication"];
+            $returnData = ["status" => 0, "msg" => "Sorry... you have wrong authantications"];
         }
         return response()->json($returnData);
                 
